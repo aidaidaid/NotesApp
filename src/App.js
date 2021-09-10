@@ -1,6 +1,6 @@
-import React from "react";
-import NoteList from "./components/NoteList";
-import NoteItem from './components/noteItem'
+import React from 'react';
+import NoteList from './components/NoteList';
+import NoteItem from './components/NoteItem'
 import '../src/App.css';
 class App extends React.Component {
   constructor(props){
@@ -16,6 +16,16 @@ class App extends React.Component {
       } 
   }
 
+  createNote = () => {
+    if (this.state.titleValue=='' && this.state.contentValue=='') {
+      alert('Должно быть заполнено хотя бы одно поле')
+    } else {
+      this.addNote(this.state.titleValue, this.state.contentValue);
+      this.setState({titleValue: ''});
+      this.setState({contentValue: ''});
+    }
+  }
+
   addNote = (titleValue, contentValue) => {
     this.setState(() => {
       return {
@@ -26,23 +36,27 @@ class App extends React.Component {
   };
  
   saveNote = () => {
-    const newNotes = this.state.notes.map((item, index)=>{
-        if (item.id===this.state.idToEdit){
-          return {
-            ...item,
-            title: this.state.titleValue,
-            content: this.state.contentValue
+    if (this.state.titleValue=='' && this.state.contentValue=='') {
+      alert('Должно быть заполнено хотя бы одно поле')
+    } else {
+      const newNotes = this.state.notes.map((item, index)=>{
+          if (item.id===this.state.idToEdit){
+            return {
+              ...item,
+              title: this.state.titleValue,
+              content: this.state.contentValue
+            }
           }
-        }
-        return item;
-    });
-    this.setState({
-      notes: newNotes,
-      idToEdit: 0,
-      titleValue: '',
-      contentValue: '',
-      isEdit: false,
-    })
+          return item;
+      });
+      this.setState({
+        notes: newNotes,
+        idToEdit: 0,
+        titleValue: '',
+        contentValue: '',
+        isEdit: false,
+      })
+    }
   }
 
   deleteNote = (idToDelete) => {
@@ -68,12 +82,6 @@ class App extends React.Component {
   onChangeContent = (text) => {
     this.setState({contentValue: text});
   }
-
-  createNote = () => {
-    this.addNote(this.state.titleValue, this.state.contentValue);
-    this.setState({titleValue: ''});
-    this.setState({contentValue: ''});
-   }
 
   render(){  
     return(
