@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../NoteItem/index.css';
+import '../noteItem/index.css';
 
 class NoteItem extends Component{
     render() {
