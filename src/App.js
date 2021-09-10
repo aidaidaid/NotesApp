@@ -1,6 +1,6 @@
 import React from 'react';
 import NoteList from './components/NoteList';
-import NoteItem from './components/NoteItem'
+import NoteItem from './components/noteItem'
 import '../src/App.css';
 class App extends React.Component {
   constructor(props){
