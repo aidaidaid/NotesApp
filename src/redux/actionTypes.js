@@ -1,0 +1,8 @@
+export const types = {
+    SET_NOTES_LIST: 'SET_NOTES_LIST',
+    SET_NOTE_DATA: 'SET_NOTE_DATA',
+    ADD_NOTE: 'ADD_NOTE',
+    DELETE_NOTE: 'DELETE_NOTE',
+    EDIT_NOTE: 'EDIT_NOTE',
+    SAVE_NOTE: 'SAVE_NOTE',
+};
