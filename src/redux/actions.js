@@ -1,15 +1,5 @@
 import { types } from "./actionTypes";
 
-// export const setNotesList = (payload) => ({
-//     type: types.SET_NOTES_LIST,
-//     payload,
-// });
-
-// export const setNoteData = (payload) => ({
-//     type: types.SET_NOTE_DATA,
-//     payload,
-// });
-
 export const addNote = (payload) => ({
     type: types.ADD_NOTE,
     payload,
