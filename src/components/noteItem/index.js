@@ -2,13 +2,17 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { addNote, saveNote } from '../../redux/actions'
 import { noteToEdit } from '../../redux/selectors';
+import { addNoteToBD } from '../../saga/noteItem/actions';
 import '../noteItem/index.css';
 
 const NoteItem = () => {
+
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
+    // const [id, setId] = useState(null);
     const [idToEdit, setIdToEdit] = useState(null);
     const dispatch = useDispatch();
+    // const id = useSelector(state => state.id - 1)
     const noteToEditValues = useSelector(noteToEdit);
 
     useEffect(() => {
@@ -31,12 +35,14 @@ const NoteItem = () => {
             alert('Должно быть заполнено хотя бы одно поле')
         } else {
             let newNote = {
+                // id: id,
                 title: title,
                 content: content,
             }
             dispatch(addNote(newNote));
             setTitle("");
             setContent("");
+            dispatch(addNoteToBD(newNote));
         }
     }
 

@@ -11,6 +11,11 @@ const initialState = {
 
 function noteReducer (state = initialState, action) {
     switch(action.type) {
+        case types.SET_NOTES:
+            return{
+                ...state,
+                notes: action.payload,
+            }
         case types.ADD_NOTE:
             action.payload.id = state.id;
             return {
